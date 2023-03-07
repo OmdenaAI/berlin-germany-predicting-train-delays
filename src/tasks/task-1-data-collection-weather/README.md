@@ -28,7 +28,7 @@ These are the different columns:
 
 
 ## Files in this folder
-- [The Code in which the dataset is being generated](../main/src/tasks/task-1-data-collection-weather/[name of notebook])
+- [The Code in which the dataset is being generated](../main/src/tasks/task-1-data-collection-weather/weather_data.ipynb)
 
 
 ## To do:  
