@@ -11,7 +11,7 @@ Note : Please Follow the below guidelines to create task folders
 
 | Task No| Task Name | Details |
 |-|-|-|
-|1|         |         |
+|1|Data Collection Weather| Get historical weather data for all cities in Belgium between 2020 and 2023|
 |2|         |         |
 |3|         |         |
 |4|         |         |
