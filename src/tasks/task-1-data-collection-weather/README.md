@@ -28,8 +28,7 @@ These are the different columns:
 
 
 ## Files in this folder
-- [The Code in which the dataset is being generated](../main/src/tasks/task-1-data-collection-weather/weather_data.ipynb)
-
+- [The Code in which the dataset is being generated](berlin-germany-predicting-train-delays/src/tasks/task-1-data-collection-weather/weather_data.ipynb)
 
 ## To do:  
 - normalize and interpolate time-series data 
