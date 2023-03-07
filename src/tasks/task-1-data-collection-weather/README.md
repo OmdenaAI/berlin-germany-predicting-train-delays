@@ -7,7 +7,7 @@ Using the meteostat python library I was able to generate a dataset with histori
 
 # Data Set 
 The Data Set has been generated using the meteostat python library: 
-[link to the documentation] (https://dev.meteostat.net/python/)
+[link to the documentation](https://dev.meteostat.net/python/)
 Each hour is represented by a Pandas DataFrame row which provides the weather data recorded at that time. 
 These are the different columns:
 | Column  | Description                                                                         | Type       |
