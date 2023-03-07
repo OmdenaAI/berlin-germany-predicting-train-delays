@@ -27,7 +27,7 @@ These are the different columns:
 | coco    | The weather condition code                                                          | Float64    |
 
 
-## Files in this repository
+## Files in this folder
 - [The Code in which the dataset is being generated](../main/src/tasks/task-1-data-collection-weather/[name of notebook])
 
 
