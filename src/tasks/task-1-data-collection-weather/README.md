@@ -4,7 +4,6 @@
 # Goal
 Using the meteostat python library I was able to generate a dataset with historical hourly weather data for all Belgian cities in the timeframe between 2020-2023.
 
-
 # Data Set 
 The Data Set has been generated using the meteostat python library: 
 [link to the documentation](https://dev.meteostat.net/python/)
@@ -26,9 +25,6 @@ These are the different columns:
 | tsun    | The one hour sunshine total in minutes (m)                                          | Float64    |
 | coco    | The weather condition code                                                          | Float64    |
 
-
-## Files in this folder
-- [The Code in which the dataset is being generated](../main/OmdenaAI/berlin-germany-predicting-train-delays/src/tasks/task-1-data-collection-weather/weather_data.ipynb)
 
 ## To do:  
 - normalize and interpolate time-series data 
