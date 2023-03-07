@@ -1,4 +1,4 @@
-# Add additional data resources to our potential model: Weather data
+# Add weather data to our potential model
 ### Get historical weather data for our prediction of train delays
 
 # Goal
