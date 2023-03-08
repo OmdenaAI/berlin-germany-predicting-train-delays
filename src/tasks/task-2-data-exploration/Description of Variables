@@ -1,0 +1,14 @@
+#Information about Variables in DataSet
+##Variable RELATION
+
+ 
+| Value                     | Description                                                                         
+|---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| InterCity (IC)            | IC trains connect Belgium’s large cities. These trains only stop at the biggest train stations and sometimes cross international borders.                                                | 
+| Peak (P)                  | P trains run during peak travel times. They provide additional alternatives when you’re travelling during busy periods. Most of these trains run in the mornings and in late afternoon.  | 
+| Local trains (L)          | L trains generally connect cities, but they also stop at every station along the route.                                                                                                  | 
+| S-trains (S)              | S trains are suburban trains that connect the city centre with the surrounding communes. S trains stop in most stations along the route.                                                 | 
+| EXTRA                     | Additional train services, used at exceptionally busy periods. For example, these are the trains that travel towards the Belgian coast on very sunny days.                               | 
+| T (Touristic)             | Additional train service to certain tourist destinations.                                                                                                                                | 
+| EXP (Coast Express)       | Extra train service to the Belgian coast during the summer period.                                                                                                                       | 
+| International trains (INT)| EC, THA, TGV, ICE, EST Regular international trains, namely Eurocity, Thalys, TGV, ICE and Eurostar.                                                                                     |
