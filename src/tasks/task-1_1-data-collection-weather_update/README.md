@@ -10,7 +10,7 @@ Using the historical weather API from https://open-meteo.com/ I gathered more co
 - These are the columns that have been gathered from the API: 
 
 | Column  | Description                                             | Unit                                    
-|---------|-------------------------------------------------------------------------------------
+|---------|---------------------------------------------------------|----------------------------
 | city | city in Belgium based on latitude and longitude in API     | name   
 | time    | The datetime of the observation                         | datetime                              
 | weathercode    | The most severe weather condition on a given day | WMO code                                                           
