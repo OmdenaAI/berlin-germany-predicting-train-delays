@@ -11,7 +11,7 @@ Using the historical weather API from https://open-meteo.com/ I gathered more co
 
 | Column  | Description                                             | Unit                                    
 |---------|-------------------------------------------------------------------------------------
-| city | city in Brussel based on latitude and longitude in API     | name   
+| city | city in Belgium based on latitude and longitude in API     | name   
 | time    | The datetime of the observation                         | datetime                              
 | weathercode    | The most severe weather condition on a given day | WMO code                                                           
 | temperature_min   |   Maximum and minimum daily air temperature at 2 meters above ground   | °C (°F)          
