@@ -11,5 +11,5 @@ Using the historical weather API from https://open-meteo.com/ I gathered more co
 
 
 # Files in this folder
-1. I pushed the CSV file of the final weather dataset to our joint google drive here: https://drive.google.com/drive/folders/1GwxT3vZ10zS9CAdR--LfAJqBXOJVWUpX
+1. I uploaded the CSV file of the final weather dataset to our joint google drive here: https://drive.google.com/drive/folders/1GwxT3vZ10zS9CAdR--LfAJqBXOJVWUpX
 2. I share the notebook that is used to get the data from the API and store it into a pandas dataframe 
