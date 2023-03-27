@@ -12,7 +12,7 @@ Note : Please Follow the below guidelines to create task folders
 | Task No| Task Name | Details |
 |-|-|-|
 |1|Data Collection Weather|Get historical weather data for all cities in Belgium between 2020 and 2023|
-|1_1|Data Collection Update|Get complete historical weather data for all cities in Belgieum between 2020 and 2023 from new data source: open-meteo.com|
+|1_1|Data Collection Update|Get complete historical weather data for all cities in Belgieum between 2020 and 2023 from new data source: [open-meteo.com](https://open-meteo.com)|
 |2|         |         |
 |3|         |         |
 |4|         |         |
