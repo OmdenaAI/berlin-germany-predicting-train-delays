@@ -62,7 +62,6 @@ with dataset:
 
 
     st.header('Here are a few insights we gathered from our data analysis')
-    st.write(my_dirs)
 
 
 image1 = Image.open(f'{images_path}/most_busy_train_day.png')
