@@ -39,6 +39,7 @@ dataset = st.container()
 features = st.container()
 model_training = st.container()
 model_Prediction = st.container()
+my_dirs = os.listdir()
 
 
 with header:
@@ -55,9 +56,8 @@ with dataset:
 
 
     st.header('Here are a few insights we gathered from our data analysis')
+    st.write(my_dirs)
 
-
-print(os.listdir())
 
 image1 = Image.open('data_for_streamlitApp/most_busy_train_day.png')
 image5 = Image.open('data_for_streamlitApp/days_of_arrival.png')
