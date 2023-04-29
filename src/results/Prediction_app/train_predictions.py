@@ -40,6 +40,12 @@ features = st.container()
 model_training = st.container()
 model_Prediction = st.container()
 my_dirs = os.listdir()
+app_path = os.path.abspath(os.curdir)
+
+if '.streamlit' in my_dirs:
+    images_path = f'{app_path}/src/results/Prediction_app/data_for_streamlitApp'
+else:
+    images_path = f'{app_path}/data_for_streamlitApp'
 
 
 with header:
@@ -59,11 +65,11 @@ with dataset:
     st.write(my_dirs)
 
 
-image1 = Image.open('data_for_streamlitApp/most_busy_train_day.png')
-image5 = Image.open('data_for_streamlitApp/days_of_arrival.png')
-image2 = Image.open('data_for_streamlitApp/delayed_departure.png')
-image3 = Image.open('data_for_streamlitApp/delayed_arrival.png')
-image4 = Image.open('data_for_streamlitApp/delayed_arrival_hours.png')
+image1 = Image.open(f'{images_path}/most_busy_train_day.png')
+image5 = Image.open(f'{images_path}/days_of_arrival.png')
+image2 = Image.open(f'{images_path}/delayed_departure.png')
+image3 = Image.open(f'{images_path}/delayed_arrival.png')
+image4 = Image.open(f'{images_path}/delayed_arrival_hours.png')
 
 
 # Comment: 
