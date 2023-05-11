@@ -2,6 +2,7 @@ import streamlit as st
 from PIL import Image
 import pickle
 import os
+from utils import DAY_OF_ARRIVAL_DICT, FINAL_DESTINATION_DICT, LINE_NO_DICT, RELATION_DICT, START_LOCATION_DICT
 
 #import xgboost as xgb
 import pandas as pd
@@ -25,12 +26,12 @@ import urllib
 
 # tensorflow
 # import tensorflow as tf
-# from tensorflow import keras
-# from tensorflow.keras.models import Sequential
-# from tensorflow.keras.layers import Dense,Dropout
+from tensorflow import keras
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense,Dropout
 # from tensorflow.keras.callbacks import EarlyStopping
 # from tensorflow.keras.optimizers import Adam
-# from tensorflow.keras import backend as K
+from tensorflow.keras import backend as K
 # from tensorflow.keras import layers
 #import tensorflow_decision_forests as tfdf
 
@@ -44,8 +45,10 @@ app_path = os.path.abspath(os.curdir)
 
 if '.streamlit' in my_dirs:
     images_path = f'{app_path}/src/results/Prediction_app/data_for_streamlitApp'
+    model_path = f'{app_path}/src/results/Prediction_app/ml_model'
 else:
     images_path = f'{app_path}/data_for_streamlitApp'
+    model_path = f'{app_path}/ml_model'
 
 
 with header:
@@ -101,43 +104,85 @@ with st.container():
     st.header('Time to train the model')
     st.text('Here you get to choose the hyperparameters of the model and see how the  performance changes ')
 
-    #Loading up the Regression model we created
 
-rf_model = pickle.load(open('OmdenaTrainDelaysRandomForestRegressor.pkl','rb'))
-
-st.markdown("Here we are using Train Number as the input to predict the Train Delay")
-
-
-#Input
-st.subheader("Enter Your Train Number")
-Train_number = st.text_input('')
-
-#Predictions
-st.subheader("Predicted Delay")
-st.code((rf_model.predict([[Train_number]])))
+    
+#Loading up the model we created
+    
+    
 
 
+# model = Sequential([
+#     Dense(256, activation='relu'), #64
+#     Dense(256, activation='relu'), #64
+#     Dense(128, activation='relu'), #64
+#     Dense(128, activation='relu'),#32
+#     Dense(1)
+# ])
 
-parameters = {'bootstrap': True,
-              'min_samples_leaf': 3,
-              'n_estimators': 100, 
-              'min_samples_split': 10,
-              'max_features': 'sqrt',
-              'max_depth': 100,
-              'max_leaf_nodes': None}
+# #model.load_model('OmdenaTrainDelaysTensorFlow1.pkl')
+# loaded_model = pickle.load(open('OmdenaTrainDelaysTensorFlow1.pkl', 'rb'))
 
-RF_model = RandomForestRegressor(**parameters)
 #Caching the model for faster loading
-#@st.cache
+@st.cache
+
+#model = pickle.load(open('OmdenaTrainDelaysTensorFlow','rb'))
+
+#st.markdown("Here we are using Train Number as the input to predict the Train Delay")
+
+
+# Define the prediction function
+
+def rmse(y_true, y_pred):
+    return K.sqrt(K.mean(K.square(y_pred - y_true)))
+
+model = keras.models.load_model(model_path, 
+                        custom_objects={'rmse':rmse})
+
+
+
+def predict(line_no_arr, relation, hour_of_arrival, day_of_arrival, start_location, final_stop_location):
+    LINE_NO_ARR = LINE_NO_DICT[line_no_arr]
+    RELATION = RELATION_DICT[relation]
+    DAY_OF_ARRIVAL = DAY_OF_ARRIVAL_DICT[day_of_arrival]
+    START_LOCATION = START_LOCATION_DICT[start_location]
+    FINAL_STOP_LOCATION = FINAL_DESTINATION_DICT[final_stop_location]
+    HOUR_OF_ARRIVAL = int(hour_of_arrival)
+
+    data = dict(zip(
+        ['LINE_NO_ARR', 'RELATION', 'HOUR_OF_ARRIVAL', 'DAY_OF_ARRIVAL', 'START_LOCATION', 'FINAL_STOP_LOCATION'],
+        [LINE_NO_ARR, RELATION, HOUR_OF_ARRIVAL, DAY_OF_ARRIVAL, START_LOCATION, FINAL_STOP_LOCATION]
+
+    ))
+
+    input_df = pd.DataFrame(data, index=[0])
+    print(input_df.dtypes)
+    prediction = np.ravel(model.predict(input_df))[0]
+
+    return prediction
+
+
+st.title("Train Delay Predictions")
+
+st.header('Please fill this form below')
+RELATION = st.selectbox('Relation', list(RELATION_DICT.keys()))
+
+
+LINE_NO_ARR = st.selectbox('Line Number', list(LINE_NO_DICT.keys()))
+
+
+HOUR_OF_ARRIVAL = st.selectbox('Hour of Arrival:', ['20', '21',  '6',  '7', '22', '14', '15',  '8',  '9', '17', '18', '19', '23', '16', '11', '12', '13',
+       '10',  '5',  '0',  '4',  '1',  '2'])
+
+DAY_OF_ARRIVAL = st.selectbox('Day of Arrival', list(DAY_OF_ARRIVAL_DICT.keys()))
+START_LOCATION = st.selectbox('Start Location', list(START_LOCATION_DICT.keys()))
+FINAL_STOP_LOCATION = st.selectbox('Final Location', list(FINAL_DESTINATION_DICT.keys()))
 
 
 
 
-with model_Prediction:
-    st.header('')
-
-
-
-
+if st.button('Predict Delay'):
+    seconds = predict(LINE_NO_ARR, RELATION, HOUR_OF_ARRIVAL, DAY_OF_ARRIVAL, START_LOCATION, FINAL_STOP_LOCATION)
+    st.success(f'The predicted seconds of delay is {seconds}')
+    # st.write(seconds)
 
 
